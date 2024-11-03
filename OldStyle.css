@@ -1,0 +1,326 @@
+
+
+
+/*Commentaires à copier-coller pour une bonne compréhension du code (en tout cas ça me paraît pas mal)*/
+/*----------------------------------------*/
+/*Couleurs et forme*/
+/*Mise en forme de l'écriture*/
+/*Position*/
+/*Autre (Adaptibilité, affichage,..)*/
+/*----------------------------------------*/
+
+
+
+
+
+
+/******************************************************************************/
+/*------------Affichage de la barre de navigation (logo et onglets)-----------*/
+/******************************************************************************/
+
+
+/*--Format du fond de la barre de navigation--*/
+
+.onglets{
+	/*Couleurs et forme*/
+	background-color: teal;
+	height: 80px;
+	width: 98.7%;
+	border-radius:20px;
+	/*Position*/
+	position: fixed;
+	top:0;
+	/*Autre (Adaptibilité, affichage,..)*/
+	overflow: auto;	
+}
+
+
+/*--Format du logo principal--*/
+
+#logo{
+	/*Couleurs et forme*/
+	height:80px;
+	/*Position*/
+	float:left;
+	margin-top:0px;
+	margin-left: 10px;
+}
+
+
+/*--Format des onglets--*/
+
+.onglet{
+	/*Couleurs et forme*/
+	width: 200px;
+	height: 80px;
+	background-color: rgba(0,0,0,0);
+	border-color: rgba(0,0,0,0);
+	border-bottom-right-radius: 10px;
+	/*Mise en forme de l'écriture*/
+	font-size:22px;
+	color:white;
+	/*Position*/
+	margin-top:0px;
+	float: left;
+	/*Autre (Adaptibilité, affichage,..)*/
+}
+
+
+/*--Changement de couleur des onglets (au passage de la souris, au clic)--*/
+
+.onglet:hover {
+  background-color: #2980b9; 
+}
+
+.onglet:active {
+  background-color: #1f618d; 
+}
+
+
+
+
+
+
+/*****************************************************************************/
+/*---Gestion de la fenêtre des choix de catégories à afficher sur la frise---*/
+/*****************************************************************************/
+
+
+/*--Bouton "Catégories affichées ▼" permettant l'affichage de la fenêtre--*/
+
+#catégoriesAffichées {
+	/*Couleurs et forme*/
+	background-color:teal;
+	height:32px;
+	width:250px;
+	border-radius:20px;
+	/*Mise en forme de l'écriture*/
+	text-align: center;
+	font-size:20px;
+	color:white;
+	/*Position*/
+	margin-top:90px;
+	margin-left:20%;
+	/*Autre (Adaptibilité, affichage,..)*/
+	overflow: auto;	
+}
+
+
+/*--Div regroupant toute la fenêtre à afficher--*/
+
+#choixAffichage {
+	/*Couleurs et forme*/
+	width: 250px;
+	/*Mise en forme de l'écriture*/
+	/*Position*/
+	position: absolute;
+    top: 126px;
+    left: 27%;
+	/*Autre (Adaptibilité, affichage,..)*/
+	display: none;
+    z-index: 1000;
+}
+
+
+/*--Haut de la fenêtre permettant le choix de la période--*/
+
+#Période {
+	/*Couleurs et forme*/
+	background-color: teal;
+	height: 31.5px;
+	margin-top:3px;
+	border-top-left-radius:20px;
+	border-top-right-radius:20px;
+	border:2px solid black;
+	border-bottom:0px;
+	/*Mise en forme de l'écriture*/
+	text-align: center;
+	font-size:20px;
+	color:white;
+	/*Position*/
+	/*Autre (Adaptibilité, affichage,..)*/
+	overflow: auto;
+}
+
+
+/*--Formatage des zones de texte (pour entrer les dates de la période)--*/
+
+.EntrerDate {
+	resize:none;
+	margin-top:5px;
+}
+
+
+/*--Bas de la fenêtre permettant le choix des catégories (cases à cocher)--*/
+
+#ListeChoix {
+	/*Couleurs et forme*/
+	background-color: white;
+	height: 140px;
+	border-bottom-left-radius:20px;
+	border-bottom-right-radius:20px;
+	border:2px solid black;
+	border-top:0px;
+	/*Mise en forme de l'écriture*/
+	text-align: center;
+	font-size:18px;
+	/*Position*/
+	/*Autre (Adaptibilité, affichage,..)*/
+	overflow: auto;	
+}
+
+
+/*--Formatage de l'affichage des premiers éléments de la liste de catégories au sein du div associé "ListeChoix"--*/
+
+.FirstChoix {
+	margin-top:10px;
+}
+
+
+
+/********************************************************************/
+/*----------------Gestion de l'affichage de la frise----------------*/
+/********************************************************************/
+
+#Frise {
+	/*Couleurs et forme*/
+	background-color:rgb(230,238,245);
+	height: 500px;
+	width: 100%;
+	border:4px solid black;
+	border-left:0px;
+	border-right:0px;
+	/*Mise en forme de l'écriture*/
+	/*Position*/
+	margin-top:20px;
+	/*Autre (Adaptibilité, affichage,..)*/
+	overflow-x: scroll;
+}
+
+/*Condition de placement des éléments*/
+/*Pour chaque élément de la même catégorie déjà placé qui contient une date commune avec le nouvel élément, niv(New_Element)+=1  */
+
+.Scientifiques {
+	width: 267px; /*triple de la durée en pixels*/
+    height: 40px;
+    background-color: #3498db;
+    border-radius: 7px;
+    position: relative;
+}
+
+.dates {
+    color: #fff;
+	font-size: 16px; /*Largeur de l'élément divisée par 15 (entier supérieur), avec un max à 16px*/ 
+	margin-left:1px;
+}
+
+.date{
+	float: left;
+	width:131.5px; /*Largeur de l'élément divisée par 2 -2*/
+	height:16px; /*Taille police des dates*/
+	margin-top:1px;
+}
+
+.fin {
+	text-align:right;
+}
+
+.nom {
+    bottom: 10px;
+    text-align:center;
+    font-size: 18px; /* Taille du texte du nom */
+    color: #fff; /* Couleur du texte du nom */
+    font-weight: bold;
+}
+
+#Scientifique_0 {
+	margin-left:14574px;        /* (DateDébut+3000)*3    */
+}
+
+/*********************************************************************/
+/*-----Gestion de l'affichage de la fenêtre "Ajouter un élément"-----*/
+/*********************************************************************/
+
+
+/*--Div regroupant toute la fenêtre à afficher*/
+
+#contenuOngletParticiper{
+	display:none;
+}
+
+#FenetreAjoutElement{
+	/*Couleurs et forme*/
+	background-color:rgb(240,248,255);
+	width:260px;
+	height:440px;
+	/*Mise en forme de l'écriture*/
+	text-align:center;
+	font-size:19px;
+	border-bottom-left-radius:20px;
+	border-bottom-right-radius:20px;
+	/*Position*/
+	position: absolute;
+	right:50px;
+	top:80px;
+	/*Autre (Adaptibilité, affichage,..)*/
+	z-index:1000;
+}
+
+#Ajout_Titre{
+	font-size:20px;
+	margin-top:15px;
+	margin-bottom:15px;
+	background-color:rgb(220,228,235);
+}
+
+#Ajout_Nom {
+	margin-top:12px;
+	margin-bottom:12px;
+}
+
+#Ajout_Détail {
+	margin-top:12px;
+	margin-bottom:12px;
+}
+
+#Ajout_ListeChoix{
+	display:none;
+	background-color:rgb(230,238,245);
+	width:240px;
+	height:100px;
+	position:absolute;
+	z-index:1001;
+}
+
+/******************************************************************************/
+/*---Gestion des boutons de bas de page pour zoomer / dézoomer sur la frise---*/
+/******************************************************************************/
+
+#zoom {
+	margin-left:15%;
+}
+#zoomIn {
+	background-image: url('zoomIn.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+	position:fixed;
+	float:left;
+	bottom: 0px;
+}
+
+#zoomOut {
+	background-image: url('zoomOut.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+	position:fixed;
+	float:left;
+	left:262px;
+	bottom: 0px;
+}
+

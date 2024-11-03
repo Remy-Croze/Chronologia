@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="OldStyle.css">
+	<script src="anim.js"></script>
+	<title>La grande chronologie humaine</title>
+</head>
+
+
+<body>
+<header>
+	<div class="onglets">
+		<img id="logo" src="logo.png" alt="logo">
+		<button class="onglet" id="ongletPagePrincipale" onclick="ChoixOnglet('contenuOngletPagePrincipale')"><b>Chronologia<b><br>La frise libre</button>
+        <button class="onglet" id="ongletPagePrincipale" onclick="ChoixOnglet('contenuOngletPagePrincipale')">Page Principale</button>
+        <button class="onglet" id="ongletParticiper" onclick="ChoixOngletAjout('contenuOngletParticiper')">Participer</button>
+        <button class="onglet" id="ongletDiscussion" onclick="ChoixOnglet('contenuOngletDiscussion')">Discussion</button>
+		<button class="onglet" id="ongletTélécharger" onclick="ChoixOnglet('contenuOngletTélécharger')">Télécharger</button>
+        <button class="onglet" id="ongletHistorique" onclick="ChoixOnglet('contenuOngletHistorique')">Historique</button>
+		<button class="onglet" id="ongletMonCompte" onclick="ChoixOnglet('contenuOngletMonCompte')">Mon Compte</button>
+    </div>
+</header>
+
+
+
+
+
+<div id='contenuOngletPagePrincipale' class="ContenuOnglet">
+
+	<button id='catégoriesAffichées' onclick="afficher('choixAffichage')"><b>Catégories affichées ▼</b></button>
+	<div id='choixAffichage'>
+		<div id='Période'><b>Période: de  </b><textarea class="EntrerDate" rows="1" cols="4"></textarea><b>  à  </b><textarea class="EntrerDate" rows="1" cols="4"></textarea></div>
+		<div id='ListeChoix'>
+			<label><input type="checkbox" class="FirstChoix" name="Guerres"> Guerres</label>
+			<label><input type="checkbox" class="FirstChoix" name="Scientifiques"> Scientifiques</label><br>
+			<label><input type="checkbox" name="Empires"> Empires</label>
+		</div>
+	</div>
+	
+	<div id='Frise'>
+	
+		<div id ='Scientifique_0' class="Scientifiques">
+			<div class="dates">
+				<div class="date debut">1858</div>
+				<div class="date fin">1947</div>
+			</div>
+			<div class="nom">Max Planck</div>
+		</div>
+
+	</div>
+	
+</div>
+
+<div id='contenuOngletParticiper' class="ContenuOnglet">
+
+	<div id="FenetreAjoutElement">
+	<div id="Ajout_Titre"><b>Ajouter un élément<b></div>
+		<div id='Ajout_Période'><b>Début:  </b><textarea id="DateDébut" class="EntrerDate Valide" rows="1" cols="4"></textarea><b>  -  Fin: </b><textarea id="DateFin" class="EntrerDate" rows="1" cols="4"></textarea></div>
+		<div id='Ajout_Nom'><b>Nom de l'élément</b><br><textarea id="Nom" class="EntrerDate Valide" rows="1" cols="20"></textarea><b></div>
+		<button id='Ajout_Catégorie' onclick="afficher('Ajout_ListeChoix')"><b>Catégories ▼</b></button>
+		<div id='Ajout_ListeChoix'>
+			<label><input type="checkbox" class="FirstChoix" name="Guerres"> Guerres</label>
+			<label><input type="checkbox" class="FirstChoix" name="Scientifiques"> Scientifiques</label><br>
+			<label><input type="checkbox" name="Empires"> Empires</label>
+		</div>
+		<div id="Ajout_Détail">Détails concernant l'élément (150 caractères max)<br><textarea id='Détail' class="EntrerDate" rows="6" cols="25"></textarea></div>
+		<div id="Ajout_Lien">Lien éventuel: <br><textarea id='Lien' class="EntrerDate Valide" rows="1" cols="25"></div>
+	</div>
+</div>
+
+<div id='contenuOngletDiscussion' class="ContenuOnglet">
+</div>
+
+<div id='contenuOngletTélécharger' class="ContenuOnglet">
+</div>
+
+<div id='contenuOngletHistorique' class="ContenuOnglet">
+</div>
+
+<div id='contenuOngletMonCompte' class="ContenuOnglet">
+</div>
+
+
+
+
+
+
+
+
+<footer>
+	<div id='zoom'>
+		<button class="zoom" id="zoomIn" onclick="zoomer()"></button>
+		<button class="zoom" id="zoomOut" onclick="afficher('contenuOngletMonCompte')"></button>
+	</div>
+</footer>
+
+
+
+</body>
+
+</html>

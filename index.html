@@ -1,73 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>Chronologia</title>
   </head>
   <body>
     <nav>
+      <img src="./Assets/Img/chronologia.png" alt="Logo chronologia" />
       <ul>
-        <li>Accueil</li>
-        <li>Modification</li>
+        <li>Page Principale</li>
+        <li>Participer</li>
         <li>Discussion</li>
-        <li>Compte</li>
-        <li>Paramètres</li>
+        <li>Télécharger</li>
+        <li>Historique</li>
+        <li>Mon Compte</li>
       </ul>
     </nav>
-    <h1>Essai Github</h1>
-    <h2>Version 2</h2>
-
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ut
-      sunt ex molestias optio, provident praesentium possimus in eius maiores
-      porro consectetur vero aut officia? Sint quam architecto facilis est.
-    </p>
-
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic maxime est
-      debitis dolor reiciendis totam animi, laudantium facilis, perspiciatis
-      eveniet voluptatem eos ipsum vel eligendi? Optio saepe eum, tenetur sit
-      voluptates numquam deserunt laborum culpa maiores id et nam quod veniam
-      explicabo vel quaerat nemo sapiente vitae repudiandae molestiae aliquid
-      iure harum accusamus. Aspernatur laudantium alias atque enim mollitia
-      magni sapiente excepturi totam est sint reprehenderit perferendis,
-      explicabo itaque quia nulla illo ab animi molestiae, iste, ipsam
-      asperiores consequuntur eaque. Fugit minima velit pariatur odit. Fugiat,
-      nemo, officia nisi et eos vero temporibus molestias qui perspiciatis ad ex
-      dicta voluptatum pariatur, iste omnis! Iste cum veniam recusandae magni
-      eum, sint vero voluptates reiciendis quis laborum mollitia natus, soluta
-      exercitationem sit distinctio! Maxime omnis a iusto, cupiditate itaque sed
-      eum dignissimos quo harum. Modi numquam at dicta odit consequatur culpa
-      dolorem sint quas quis accusantium eveniet omnis tenetur fugit distinctio
-      aspernatur quo, eius, aperiam eos totam autem? Fugit commodi illum animi
-      harum deserunt consequuntur delectus sit, sequi voluptas quod! Beatae,
-      iure corporis autem quisquam nisi laborum debitis alias, impedit, dolores
-      neque dignissimos quaerat hic voluptatem cumque distinctio ea! Odit
-      laudantium quos enim minus placeat iusto eum ea harum. Provident,
-      voluptatem? Provident consectetur perferendis, rerum obcaecati laudantium
-      qui magnam cum tempore architecto dicta id, facilis deleniti fugiat velit
-      eveniet voluptatum amet, reiciendis neque. Quod, inventore cumque?
-      Blanditiis alias mollitia molestias dolorem aliquid! Aliquam quos quae
-      impedit quibusdam accusamus, unde sunt et! Architecto commodi, rerum
-      quibusdam beatae consectetur aliquid repudiandae, incidunt, dolorem odit
-      magnam accusantium temporibus magni culpa dolores voluptatum quos aliquam
-      eos odio a molestias. Nostrum consequuntur suscipit modi quasi temporibus
-      esse, sit reprehenderit exercitationem aspernatur. Earum ut natus facilis
-      ratione voluptatem saepe quisquam tenetur. Laboriosam temporibus
-      asperiores eligendi tempore nostrum sint debitis odit voluptatibus
-      repellendus veniam eveniet explicabo, maxime eum dolore natus placeat enim
-      consectetur expedita autem aut. Officiis, laudantium. Expedita sequi quia
-      unde atque a quasi autem sit excepturi illo impedit, enim magnam aut! Id
-      optio nam quidem exercitationem quibusdam deleniti, animi deserunt aut
-      impedit sit velit modi ipsum nisi eaque! Reprehenderit, nostrum. Corporis
-      quae consequatur ipsa obcaecati quos itaque ad mollitia soluta ex,
-      provident nisi officiis est iusto sit neque commodi ducimus iste error
-      veniam vero ea, aut quia eveniet. Rem accusantium porro sit illo nam nisi
-      ipsam eum quos, aliquid magnam excepturi dolorem voluptas vitae, quisquam
-      ratione unde qui deserunt corporis. Blanditiis labore accusantium magni
-      maxime necessitatibus ratione?
-    </p>
+    <div id="Displayed_categories_button_container">
+      <button onclick="afficher('choixAffichage')">
+        Catégories affichées ▼
+      </button>
+    </div>
+    <div id="Displayed_categories">
+      <div id="Période">
+        Période: de <textarea class="EntrerDate" rows="1" cols="4"></textarea> à
+        <textarea class="EntrerDate" rows="1" cols="4"></textarea>
+      </div>
+      <div id="ListeChoix">
+        <label
+          ><input type="checkbox" class="FirstChoix" name="Guerres" />
+          Guerres</label
+        >
+        <label
+          ><input type="checkbox" class="FirstChoix" name="Scientifiques" />
+          Scientifiques</label
+        ><br />
+        <label><input type="checkbox" name="Empires" /> Empires</label>
+      </div>
+    </div>
   </body>
 </html>
