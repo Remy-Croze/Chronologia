@@ -18,27 +18,77 @@
         <li>Mon Compte</li>
       </ul>
     </nav>
-    <div id="Displayed_categories_button_container">
-      <button onclick="afficher('choixAffichage')">
-        Catégories affichées ▼
-      </button>
-    </div>
-    <div id="Displayed_categories">
-      <div id="Période">
-        Période: de <textarea class="EntrerDate" rows="1" cols="4"></textarea> à
-        <textarea class="EntrerDate" rows="1" cols="4"></textarea>
+
+    <button class="display-cat-button">Catégories affichées ▼</button>
+
+    <div class="displayed-cat-popup-container">
+      <div class="displayed-cat-popup">
+        <div class="displayed-cat-popup-top">
+          <p>Période: De</p>
+          <textarea class="DateEntry"></textarea>
+          <p>à</p>
+          <textarea class="DateEntry"></textarea>
+        </div>
+        <div class="displayed-cat-popup-bottom">
+          <div class="cat-list-container">
+            <ul>
+              <li>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="select-cat"
+                    name="Guerres"
+                  />Guerres</label
+                >
+              </li>
+              <li>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="select-cat"
+                    name="Scientifiques"
+                  />Scientifiques</label
+                >
+              </li>
+              <li>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="select-cat"
+                    name="Philosophes"
+                  />Philosophes</label
+                >
+              </li>
+              <li>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="select-cat"
+                    name="Empires"
+                  />Empires</label
+                >
+              </li>
+              <li>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="select-cat"
+                    name="Dirigeans de France"
+                  />Dirigeans de France</label
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div id="ListeChoix">
-        <label
-          ><input type="checkbox" class="FirstChoix" name="Guerres" />
-          Guerres</label
-        >
-        <label
-          ><input type="checkbox" class="FirstChoix" name="Scientifiques" />
-          Scientifiques</label
-        ><br />
-        <label><input type="checkbox" name="Empires" /> Empires</label>
-      </div>
     </div>
+    <div class="time-arrow"></div>
+    <footer>
+      <ul>
+        <li>Random 1</li>
+        <li>Random 2</li>
+        <li>Random 3</li>
+      </ul>
+    </footer>
   </body>
 </html>
