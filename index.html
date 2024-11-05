@@ -3,12 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./Assets/Img/chronologia.png" type="image/png" />
     <link rel="stylesheet" href="style.css" />
     <title>Chronologia</title>
   </head>
   <body>
     <nav>
-      <img src="./Assets/Img/chronologia.png" alt="Logo chronologia" />
+      <img
+        src="./Assets/Img/chronologia.png"
+        alt="Logo chronologia"
+        type="image/png"
+      />
       <ul>
         <li>Page Principale</li>
         <li>Participer</li>
@@ -31,7 +36,7 @@
         </div>
         <div class="displayed-cat-popup-bottom">
           <div class="cat-list-container">
-            <ul>
+            <ul class="cat-list">
               <li>
                 <label
                   ><input
@@ -49,6 +54,44 @@
                     name="Scientifiques"
                   />Scientifiques</label
                 >
+                <ul class="select-nat-list">
+                  <li>
+                    <label
+                      ><input
+                        type="checkbox"
+                        class="select-nat"
+                        name="Français"
+                      />Français</label
+                    >
+                  </li>
+                  <li>
+                    <label
+                      ><input
+                        type="checkbox"
+                        class="select-nat"
+                        name="Anglais"
+                      />Anglais</label
+                    >
+                  </li>
+                  <li>
+                    <label
+                      ><input
+                        type="checkbox"
+                        class="select-nat"
+                        name="Allemand"
+                      />Allemand</label
+                    >
+                  </li>
+                  <li>
+                    <label
+                      ><input
+                        type="checkbox"
+                        class="select-nat"
+                        name="Espagnol"
+                      />Espagnol</label
+                    >
+                  </li>
+                </ul>
               </li>
               <li>
                 <label
@@ -77,22 +120,82 @@
                   />Dirigeans de France</label
                 >
               </li>
+              <li>
+                <label
+                  ><input
+                    type="checkbox"
+                    class="select-cat"
+                    name="Inventions scientifiques"
+                  />Inventions scientifiques</label
+                >
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
     <div class="time-arrow">
-      <div class="scientist-element" id="ALL7955AE">
-        <div class="date-container">
-          <div class="date">14/03/1879</div>
-          <div class="date">18/04/1955</div>
+      <div class="scientific-cat-container">
+        <div class="scientist-element" id="GER7955ALEI">
+          <div class="date-container">
+            <div class="date">14/03/1879</div>
+            <div class="date">18/04/1955</div>
+          </div>
+          <div class="name-container">
+            <div class="name">Albert Einstein</div>
+          </div>
+          <div class="nationality-container">
+            <div class="nationality">Allemand</div>
+          </div>
+          <div class="scientist-element" id="ENG1254ALTU">
+            <div class="date-container">
+              <div class="date">23/06/1912</div>
+              <div class="date">07/06/1954</div>
+            </div>
+            <div class="name-container">
+              <div class="name">Alan Turing</div>
+            </div>
+            <div class="nationality-container">
+              <div class="nationality">Anglais</div>
+            </div>
+          </div>
         </div>
-        <div class="name-container">
-          <div class="name">Albert Einstein</div>
+      </div>
+    </div>
+    <div class="element-adding-popup">
+      <div class="element-adding-popup-top">
+        <p>Ajouter un élement</p>
+      </div>
+      <div class="element-adding-popup-bottom">
+        <div class="element-adding-popup-name">
+          <p>Nom</p>
+          <textarea></textarea>
         </div>
-        <div class="nationality-container">
-          <div class="nationality">Allemand</div>
+        <div class="element-adding-popup-cat">
+          <label for="element-adding-popup-cat_list">Catégorie</label>
+          <select id="element-adding-popup-cat_list">
+            <option value="Guerre">Guerre</option>
+            <option selected="Scientifique" value="Scientifique">
+              Scientifique
+            </option>
+            <option value="Philosophe">Philosophe</option>
+            <option value="Empire">Empire</option>
+            <option value="Dirigeant de France">Dirigeant de France</option>
+          </select>
+        </div>
+        <div class="element-adding-popup-period">
+          <p>De</p>
+          <textarea></textarea>
+          <p>à</p>
+          <textarea></textarea>
+        </div>
+        <div class="element-adding-popup-details">
+          <p>Détails éventuels</p>
+          <textarea></textarea>
+        </div>
+        <div class="element-adding-popup-link">
+          <p>Lien éventuels</p>
+          <textarea></textarea>
         </div>
       </div>
     </div>
