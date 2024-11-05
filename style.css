@@ -217,21 +217,24 @@ nav img {
 }
 
 .element-adding-popup {
-  height: 400px;
+  height: 350px;
   width: 250px;
   background: rgb(247, 247, 247);
   position: absolute;
+  right: 25px;
   z-index: 1001;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
+  border: 2px solid black;
 }
 
 .element-adding-popup-top {
   height: 30px;
-  width: 250px%;
+  width: 100%;
+  border-radius: 5px;
   background: rgb(219, 219, 219);
   display: flex;
   justify-content: center;
@@ -240,8 +243,8 @@ nav img {
 
 .element-adding-popup-bottom {
   height: 300px;
-  width: 250px;
-  padding: 15px;
+  width: 100%;
+  border-radius: 5px;
   background: rgb(219, 219, 219);
   display: flex;
   flex-direction: column;
@@ -250,7 +253,6 @@ nav img {
 }
 
 .element-adding-popup-name {
-  width: 250px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -262,7 +264,6 @@ nav img {
 }
 
 .element-adding-popup-cat {
-  width: 250px;
   display: flex;
   justify-content: space-between;
   align-items: center;
