@@ -2,6 +2,10 @@
   margin: 0;
 }
 
+/**************************************************/
+/*NAVBAR*/
+/**************************************************/
+
 nav {
   display: grid;
   height: 80px;
@@ -38,6 +42,10 @@ nav img {
   padding-left: 20%;
 }
 
+/**************************************************/
+/*BUTTON TO DISPLAY THE CATEGORY SELECTION POPUP*/
+/**************************************************/
+
 .display-cat-button {
   background-color: teal;
   position: absolute;
@@ -51,6 +59,10 @@ nav img {
   font-weight: bold;
   color: rgb(247, 247, 247);
 }
+
+/**************************************************/
+/*CATEGORY SELECTION POPUP*/
+/**************************************************/
 
 .displayed-cat-popup-container {
   position: relative;
@@ -135,6 +147,10 @@ nav img {
   overflow-y: scroll;
 }
 
+/**************************************************/
+/*TIMELINE*/
+/**************************************************/
+
 .time-arrow {
   background-color: rgb(230, 238, 245);
   height: 60%;
@@ -149,6 +165,10 @@ nav img {
   overflow-y: scroll;
 }
 
+/**************************************************/
+/*CATEGORY BACKGROUNDS*/
+/**************************************************/
+
 .scientific-cat-container {
   height: 97px;
   background: #f0e4e4;
@@ -157,6 +177,10 @@ nav img {
   padding: 7px;
   position: relative;
 }
+
+/**************************************************/
+/*CATEGORY ELEMENTS*/
+/**************************************************/
 
 .scientist-element {
   height: 40px;
@@ -170,6 +194,10 @@ nav img {
   justify-content: center;
 }
 
+/**************************************************/
+/*ELEMENTS*/
+/**************************************************/
+
 #GER7955ALEI {
   width: 277.93px;
 }
@@ -179,6 +207,10 @@ nav img {
   top: 45px;
   left: 121.54px;
 }
+
+/**************************************************/
+/*GENERAL ELEMENT*/
+/**************************************************/
 
 .date-container {
   height: 10px;
@@ -216,6 +248,10 @@ nav img {
   font-size: 0.7rem;
 }
 
+/**************************************************/
+/*ELEMENT ADDING POPUP*/
+/**************************************************/
+
 .element-adding-popup {
   height: 350px;
   width: 250px;
@@ -248,26 +284,81 @@ nav img {
   background: rgb(219, 219, 219);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.element-adding-popup-bottom textarea {
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-align: center;
+  resize: none;
 }
 
 .element-adding-popup-name {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .element-adding-popup-name textarea {
-  height: 18px;
+  height: 17px;
   width: 160px;
 }
 
 .element-adding-popup-cat {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
+.element-adding-popup-period {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.element-adding-popup-period textarea {
+  height: 17px;
+  width: 60px;
+}
+
+.element-adding-popup-details {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: start;
+}
+
+.element-adding-popup-details textarea {
+  height: 40px;
+  width: 100%;
+}
+
+.element-adding-popup-link {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: start;
+}
+
+.element-adding-popup-link textarea {
+  height: 17px;
+  width: 100%;
+}
+
+/**************************************************/
+/*FOOTER*/
+/**************************************************/
 
 footer {
   position: absolute;
