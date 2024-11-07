@@ -6,6 +6,10 @@
 /*NAVBAR*/
 /**************************************************/
 
+body {
+  background: rgba(255, 243, 243, 0.916);
+}
+
 nav {
   display: grid;
   height: 80px;
@@ -253,7 +257,7 @@ nav img {
 /**************************************************/
 
 .element-adding-popup {
-  height: 350px;
+  height: 400px;
   width: 250px;
   background: rgb(247, 247, 247);
   position: absolute;
@@ -278,7 +282,7 @@ nav img {
 }
 
 .element-adding-popup-bottom {
-  height: 300px;
+  height: 350px;
   width: 100%;
   border-radius: 5px;
   background: rgb(219, 219, 219);
@@ -316,6 +320,13 @@ nav img {
   align-items: center;
 }
 
+.element-adding-popup-nat {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .element-adding-popup-period {
   width: 100%;
   display: flex;
@@ -338,7 +349,7 @@ nav img {
 }
 
 .element-adding-popup-details textarea {
-  height: 40px;
+  height: 51px;
   width: 100%;
 }
 
