@@ -1,27 +1,30 @@
-const ZoomControls = ({ zoomLevel, setZoomLevel }) => {
-  const zoomIn = () => {
-    if (zoomLevel < 5) setZoomLevel(prev => prev + 0.2);
-  };
+const ZoomControls = ({ zoomIndex, setZoomIndex }) => {
+  const min = 6;
+  const max = 56;
 
-  const zoomOut = () => {
-    if (zoomLevel > 0.2) setZoomLevel(prev => prev - 0.2);
+  // Calcule le zoom à partir de l'index
+  const computeZoomLevel = (index) => 0.00159983 * Math.pow(1.2, index - 1);
+
+  const zoomLevel = computeZoomLevel(zoomIndex);
+
+  const handleChange = (e) => {
+    const newIndex = parseInt(e.target.value);
+    setZoomIndex(newIndex); 
   };
 
   return (
-    <div className="fixed bottom-4 left-4 bg-white p-2 rounded-xl shadow-lg z-50 flex gap-2 items-center">
-      <button
-        onClick={zoomOut}
-        className="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300 transition"
-      >
-        -
-      </button>
-      <span className="text-sm font-semibold text-black">{(zoomLevel * 100).toFixed(0)}%</span>
-      <button
-        onClick={zoomIn}
-        className="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300 transition"
-      >
-        +
-      </button>
+    <div className="fixed bottom-4 left-4 bg-white p-4 rounded-xl shadow-lg z-50 flex flex-col items-center">
+      <input
+        type="range"
+        min={min}
+        max={max}
+        value={zoomIndex}
+        onChange={handleChange}
+        className="w-48"
+      />
+      <span className="text-sm mt-2 text-black font-semibold">
+        {zoomLevel.toFixed(2)} px/jour
+      </span>
     </div>
   );
 };

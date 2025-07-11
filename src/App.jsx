@@ -7,8 +7,10 @@ import Scale from "./components/Scale";
 import { useState } from "react";
 
 function App() {
-  const [zoomLevel, setZoomLevel] = useState(1);
   const [offsetX, setOffsetX] = useState(0);
+  const [zoomIndex, setZoomIndex] = useState(50); // position du curseur (1 à 56)
+  const zoomLevel = 0.00159983 * Math.pow(1.2, zoomIndex - 1);
+
 
   return (
     <div className="flex flex-col h-screen w-screen">
@@ -16,11 +18,12 @@ function App() {
       <div className="relative flex flex-1 ">
         <Sidebar />
         <div className="flex-1 flex flex-col">
-          <Scale zoomLevel={zoomLevel} offsetX={offsetX} />
-          <Timeline zoomLevel={zoomLevel} offsetX={offsetX} />
+          <Scale zoomLevel={zoomLevel} offsetX={offsetX} zoomIndex={zoomIndex} />
+          <Timeline zoomLevel={zoomLevel} offsetX={offsetX} zoomIndex={zoomIndex} />
+
         </div>
         <FullscreenButton />
-        <ZoomControls zoomLevel={zoomLevel} setZoomLevel={setZoomLevel} />
+        <ZoomControls zoomIndex={zoomIndex} setZoomIndex={setZoomIndex} />
       </div>
     </div>
   );
