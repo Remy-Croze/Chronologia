@@ -79,32 +79,62 @@ function getMonthName(monthIndex, zoomIndex) {
 }
 
 
-/** Rendu des libellés d'années, centrés. */
-function RenderYears({ years, gridSize, zoomIndex }) {
-// Règle d'affichage : fréquence de visibilité selon zoom
-  let showStep = 1;
-  if (zoomIndex >= 21 && zoomIndex <= 22) {
-    showStep = 2;
-  } else if (zoomIndex >= 17 && zoomIndex <= 20) {
-    showStep = 5;
-  } else if (zoomIndex >= 13 && zoomIndex <= 16) {
-    showStep = 10;
-  } else if (zoomIndex >= 11 && zoomIndex <= 12) {
-    showStep = 20;
-  } else if (zoomIndex >= 8 && zoomIndex <= 10) {
-    showStep = 50;
-  } else if (zoomIndex >= 6 && zoomIndex <= 7) {
-    showStep = 100;
+function generateFixedMonthsAndYears(startYear, numYears, monthWidth) {
+  const months = [];
+  const years = [];
+
+  for (let y = 0; y < numYears; y++) {
+    years.push({
+      label: startYear + y,
+      start: y * 12,
+      length: 12,
+    });
+
+    for (let m = 0; m < 12; m++) {
+      months.push({
+        label: m,
+        year: startYear + y,
+        start: y * 12 + m,
+        length: 1,
+      });
+    }
   }
 
+  return { months, years };
+}
+
+
+
+/** Rendu des libellés d'années, centrés. */
+function RenderYears({ years, gridSize, zoomIndex, offsetDays, totalDays }) {
+  let showStep = 1;
+  if (zoomIndex >= 21 && zoomIndex <= 22) showStep = 2;
+  else if (zoomIndex >= 17 && zoomIndex <= 20) showStep = 5;
+  else if (zoomIndex >= 13 && zoomIndex <= 16) showStep = 10;
+  else if (zoomIndex >= 11 && zoomIndex <= 12) showStep = 20;
+  else if (zoomIndex >= 8 && zoomIndex <= 10) showStep = 50;
+  else if (zoomIndex >= 6 && zoomIndex <= 7) showStep = 100;
+
+  if (zoomIndex <= 31) {
+    const visibleMonths = Math.ceil(totalDays / 30);
+    const visibleYears = Math.ceil(visibleMonths / 12);
+    const startYear = -2000 + Math.floor(offsetDays / 365);
+    const { years: fixedYears } = generateFixedMonthsAndYears(startYear, visibleYears + 2);
+    return (
+      <div className="absolute top-0 left-0 h-6 flex text-xs font-bold text-black items-center z-10" style={{ transform: `translateX(${gridSize / 2}px)` }}>
+        {fixedYears.map((year, i) => (
+          <div key={i} className="flex justify-center items-center" style={{ width: `${12 * gridSize}px`, textAlign: "center" }}>
+            {i % showStep === 0 ? year.label : ""}
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
-    <div className="absolute top-0 left-0 h-6 flex text-xs font-bold text-black items-center z-10"
-         style={{ transform: `translateX(${gridSize / 2}px)` }}>
+    <div className="absolute top-0 left-0 h-6 flex text-xs font-bold text-black items-center z-10" style={{ transform: `translateX(${gridSize / 2}px)` }}>
       {years.map((year, i) => (
-        <div key={i} className="flex justify-center items-center"
-             style={{ width: `${year.length * gridSize}px`, textAlign: "center" }}>
-          {/* Affiche seulement certaines années selon la règle */}
+        <div key={i} className="flex justify-center items-center" style={{ width: `${year.length * gridSize}px`, textAlign: "center" }}>
           {i % showStep === 0 ? year.label : ""}
         </div>
       ))}
@@ -112,18 +142,32 @@ function RenderYears({ years, gridSize, zoomIndex }) {
   );
 }
 
+
 /** Rendu des noms des mois centrés. */
-function RenderMonths({ months, gridSize, zoomIndex }) {
+function RenderMonths({ months, gridSize, zoomIndex, offsetDays, totalDays }) {
+  if (zoomIndex <= 31) {
+    const visibleMonths = Math.ceil(totalDays / 30);
+    const visibleYears = Math.ceil(visibleMonths / 12);
+    const startYear = -2000 + Math.floor(offsetDays / 365);
+    const { months: fixedMonths } = generateFixedMonthsAndYears(startYear, visibleYears + 2);
+    return (
+      <div className="absolute top-6 left-0 h-6 flex text-xs text-gray-800 items-center z-10" style={{ transform: `translateX(${gridSize / 2}px)` }}>
+        {fixedMonths.map((month, i) => (
+          <div key={i} className="flex justify-center items-center" style={{ width: `${gridSize}px`, textAlign: "center" }}>
+            {getMonthName(month.label, zoomIndex)}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return (
-    <div className="absolute top-6 left-0 h-6 flex text-xs text-gray-800 items-center z-10"
-         style={{ transform: `translateX(${gridSize / 2}px)` }}>
+    <div className="absolute top-6 left-0 h-6 flex text-xs text-gray-800 items-center z-10" style={{ transform: `translateX(${gridSize / 2}px)` }}>
       {months.map((month, i) => (
-        <div key={i} className="flex justify-center items-center"
-            style={{ width: `${month.length * gridSize}px`, textAlign: "center"}}>
+        <div key={i} className="flex justify-center items-center" style={{ width: `${month.length * gridSize}px`, textAlign: "center" }}>
           {getMonthName(month.label, zoomIndex)}
         </div>
       ))}
-
     </div>
   );
 }
@@ -172,14 +216,16 @@ function RenderTicks({ dates, gridSize, zoomIndex }) {
 
     // Toujours afficher les 1ers du mois, même si zoomIndex est bas
     const isMonthStart = day === 1;
+    const isYearStart = (day === 1 && month === 1);
 
     // Règle générale par zoomIndex
     if (zoomIndex >= 44 && zoomIndex <= 56) return true;
     if (zoomIndex >= 40 && zoomIndex <= 43) return i % 4 === 0 || isMonthStart;
     if (zoomIndex >= 37 && zoomIndex <= 39) return i % 8 === 0 || isMonthStart;
+    if (zoomIndex >=31 && zoomIndex <= 36) return isMonthStart
 
     // Quand zoomIndex < 34 → afficher uniquement les 1er du mois
-    return isMonthStart;
+    return isYearStart;
   }
 
   return (
@@ -225,10 +271,32 @@ function RenderTicks({ dates, gridSize, zoomIndex }) {
 
 
 
+
 /** Composant principal Scale (échelle temporelle). */
 export default function Scale({ zoomLevel, offsetX, zoomIndex }) {
-  const baseSize = 2;
-  const gridSize = baseSize * zoomLevel;
+  const zoomIndexToGridSize = {
+    48: 40,
+    47: 28,
+    46: 20,
+    45: 14,
+    44: 10,
+    43: 7,
+    42: 6,
+    41: 5,
+    40: 4,
+    39: 3,
+    38: 2.5,
+    37: 2.1,
+    36: 1.2,
+    35: 0.8,
+    34: 0.5,
+    33: 0.3,
+    32: 0.2,
+  };
+
+
+  const gridSize = zoomIndexToGridSize[zoomIndex] ?? 2;
+
   const visibleWidth = window.innerWidth;
   const totalDays = Math.ceil(visibleWidth / gridSize);
   const offsetDays = Math.floor(offsetX / gridSize);
@@ -256,7 +324,7 @@ export default function Scale({ zoomLevel, offsetX, zoomIndex }) {
 
       <RenderYears years={years} gridSize={gridSize} zoomIndex={zoomIndex} />
 
-      {zoomIndex >= 27 && (
+      {zoomIndex >= 32 && (
         <RenderMonths months={months} gridSize={gridSize} zoomIndex={zoomIndex} />
       )}
 

@@ -70,8 +70,46 @@ function GridOverlay({ gridSize, effectiveGridSize, showMainGrid, showSubgrid, s
  * Composant principal Timeline.
  */
 export default function Timeline({ zoomLevel, offsetX, zoomIndex }) {
-  const baseSize = 2;
-  const gridSize = baseSize * zoomLevel;
+  const zoomIndexToGridSize = {
+    48: 40,
+    47: 28,
+    46: 20,
+    45: 14,
+    44: 10,
+    43: 7,
+    42: 5,
+    41: 3,
+    40: 2,
+    39: 1.5,
+    38: 1,
+    37: 0.8,
+    36: 0.5,
+    35: 0.4,
+    34: 0.3,
+    33: 0.2,
+    32: 0.13,
+    31: 0.1,
+    30: 0.07,
+    29: 0.05,
+    28: 0.03,
+    27: 0.02,
+    26: 0.015,
+    25: 0.01,
+    24: 0.008,
+    23: 0.005,
+    22: 0.0035,
+    21: 0.0025,
+    20: 0.0018,
+    19: 0.0013,
+    18: 0.0009,
+    17: 0.0006,
+    16: 0.0004,
+    15: 0.0003,
+    14: 0.0002,
+  };
+
+  const gridSize = zoomIndexToGridSize[zoomIndex] ?? 2;
+
   const lineStep = getDayStepFromZoomIndex(zoomIndex);
   const effectiveGridSize = gridSize * lineStep;
 
@@ -85,11 +123,11 @@ export default function Timeline({ zoomLevel, offsetX, zoomIndex }) {
   const subgrid2Size = gridSize * 4;
   const subgrid2Thickness = zoomIndex < 42 ? 1 : 2;
 
-  const showSubgrid3 = (zoomIndex >= 34 && zoomIndex <= 41); 
+  const showSubgrid3 = (zoomIndex >= 37 && zoomIndex <= 41); 
   const subgrid3Size = gridSize * 8;
   const subgrid3Thickness = zoomIndex < 38 ? 1 : 2;
 
-  const showSubgrid4 = (zoomIndex >= 30 && zoomIndex <= 37); 
+  const showSubgrid4 = (zoomIndex >= 37 && zoomIndex <= 37); 
   const subgrid4Size = gridSize * 16;
   const subgrid4Thickness = zoomIndex < 34 ? 1 : 2;
 
