@@ -36,10 +36,22 @@ function getSubgridStyle(subgridSize, gridSize, thick) {
   };
 }
 
+
+function getSubgridStyleMonth(subgridSize, gridSize, thick, step) {
+  return {
+    backgroundImage: `
+      linear-gradient(to right, #ddd ${thick}px, transparent 1px),
+      linear-gradient(to bottom, #ddd 1px, transparent 1px)
+    `,
+    backgroundSize: `${subgridSize}px ${subgridSize}px`,
+    backgroundPosition: `${gridSize*6}px 0px`,
+  };
+}
+
 /**
  * Composant qui affiche la grille de fond dynamique (principale et secondaire).
  */
-function GridOverlay({ gridSize, effectiveGridSize, showMainGrid, showSubgrid, subgridSize, subgridThickness, showSubgrid2, subgrid2Size, subgrid2Thickness, showSubgrid3, subgrid3Size, subgrid3Thickness, showSubgrid4, subgrid4Size, subgrid4Thickness}) {
+function GridOverlay({ gridSize, effectiveGridSize, showMainGrid, showSubgrid, subgridSize, subgridThickness, showSubgrid2, subgrid2Size, subgrid2Thickness, showSubgrid3, subgrid3Size, subgrid3Thickness, showSubgrid4, subgrid4Size, subgrid4Thickness, showSubgrid5, subgrid5Size, subgrid5Thickness, showSubgrid6, subgrid6Size, subgrid6Thickness, showSubgrid7, subgrid7Size, subgrid7Thickness, showSubgrid8, subgrid8Size, subgrid8Thickness}) {
   return (
     <div className="absolute inset-0 pointer-events-none z-0">
       {/* Grille principale */}
@@ -61,6 +73,22 @@ function GridOverlay({ gridSize, effectiveGridSize, showMainGrid, showSubgrid, s
       {/* Sous-grille4 */}
       {showSubgrid4 && (
         <div className="absolute inset-0 opacity-25" style={getSubgridStyle(subgrid4Size, gridSize, subgrid4Thickness)} />
+      )}
+      {/* Sous-grille5 - Mois */}
+      {showSubgrid5 && (
+        <div className="absolute inset-0 opacity-25" style={getSubgridStyleMonth(subgrid5Size, gridSize, subgrid5Thickness)} />
+      )}
+      {/* Sous-grille6 - Mois */}
+      {showSubgrid6 && (
+        <div className="absolute inset-0 opacity-25" style={getSubgridStyleMonth(subgrid6Size, gridSize, subgrid6Thickness)} />
+      )}
+      {/* Sous-grille7 - Mois */}
+      {showSubgrid7 && (
+        <div className="absolute inset-0 opacity-25" style={getSubgridStyleMonth(subgrid7Size, gridSize, subgrid7Thickness)} />
+      )}
+      {/* Sous-grille8 - Mois */}
+      {showSubgrid8 && (
+        <div className="absolute inset-0 opacity-25" style={getSubgridStyleMonth(subgrid8Size, gridSize, subgrid8Thickness)} />
       )}
     </div>
   );
@@ -88,24 +116,24 @@ export default function Timeline({ zoomLevel, offsetX, zoomIndex }) {
     34: 0.3,
     33: 0.2,
     32: 0.13,
-    31: 0.1,
-    30: 0.07,
-    29: 0.05,
-    28: 0.03,
-    27: 0.02,
-    26: 0.015,
-    25: 0.01,
-    24: 0.008,
-    23: 0.005,
-    22: 0.0035,
-    21: 0.0025,
-    20: 0.0018,
-    19: 0.0013,
-    18: 0.0009,
-    17: 0.0006,
-    16: 0.0004,
-    15: 0.0003,
-    14: 0.0002,
+    31: 3.5,
+    30: 2.6,
+    29: 2,
+    28: 1.5,
+    27: 1.1,
+    26: 0.8,
+    25: 0.6,
+    24: 0.45,
+    23: 0.35,
+    22: 0.25,
+    21: 0.2,
+    20: 0.15,
+    19: 0.11,
+    18: 0.08,
+    17: 0.06,
+    16: 0.045,
+    15: 0.035,
+    14: 0.025,
   };
 
   const gridSize = zoomIndexToGridSize[zoomIndex] ?? 2;
@@ -131,6 +159,22 @@ export default function Timeline({ zoomLevel, offsetX, zoomIndex }) {
   const subgrid4Size = gridSize * 16;
   const subgrid4Thickness = zoomIndex < 34 ? 1 : 2;
 
+  const showSubgrid5 = (zoomIndex >= 28 && zoomIndex <= 31); 
+  const subgrid5Size = gridSize * 12;
+  const subgrid5Thickness = zoomIndex < 29 ? 1 : 2;
+
+  const showSubgrid6 = (zoomIndex >= 23 && zoomIndex <= 28); 
+  const subgrid6Size = gridSize * 60;
+  const subgrid6Thickness = zoomIndex < 28 ? 1 : 2;
+
+  const showSubgrid7 = (zoomIndex >= 20 && zoomIndex <= 27); 
+  const subgrid7Size = gridSize * 120;
+  const subgrid7Thickness = zoomIndex < 22 ? 1 : 2;
+
+  const showSubgrid8 = (zoomIndex >= 14 && zoomIndex <= 19); 
+  const subgrid8Size = gridSize * 600;
+  const subgrid8Thickness = zoomIndex < 17 ? 1 : 2;
+
   // Définir une très large zone scrollable (ex: 10 000 jours)
   const totalDays = 10000;
   const totalWidth = totalDays * gridSize;
@@ -155,6 +199,18 @@ export default function Timeline({ zoomLevel, offsetX, zoomIndex }) {
           showSubgrid4={showSubgrid4}
           subgrid4Size={subgrid4Size}
           subgrid4Thickness={subgrid4Thickness}
+          showSubgrid5={showSubgrid5}
+          subgrid5Size={subgrid5Size}
+          subgrid5Thickness={subgrid5Thickness}
+          showSubgrid6={showSubgrid6}
+          subgrid6Size={subgrid6Size}
+          subgrid6Thickness={subgrid6Thickness}
+          showSubgrid7={showSubgrid7}
+          subgrid7Size={subgrid7Size}
+          subgrid7Thickness={subgrid7Thickness}
+          showSubgrid8={showSubgrid8}
+          subgrid8Size={subgrid8Size}
+          subgrid8Thickness={subgrid8Thickness}
         />
 
         {/* Éléments de la frise (écrivains par exemple) */}

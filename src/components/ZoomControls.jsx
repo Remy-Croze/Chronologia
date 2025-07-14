@@ -39,7 +39,6 @@ const zoomIndexToGridSize = {
 const ZoomControls = ({ zoomIndex, setZoomIndex }) => {
   const min = 14;
   const max = 48;
-
   const zoomLevel = zoomIndexToGridSize[zoomIndex] ?? 2;
 
   const handleChange = (e) => {
@@ -48,14 +47,14 @@ const ZoomControls = ({ zoomIndex, setZoomIndex }) => {
   };
 
   return (
-    <div className="fixed bottom-4 left-4 bg-white p-4 rounded-xl shadow-lg z-50 flex flex-col items-center">
+    <div className="w-full bg-white p-2 rounded-xl shadow flex flex-col items-center">
       <input
         type="range"
         min={min}
         max={max}
         value={zoomIndex}
         onChange={handleChange}
-        className="w-48"
+        className="w-full"
       />
       <span className="text-sm mt-2 text-black font-semibold">
         {zoomLevel} px/jour
